@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('permission_role', function (Blueprint $table) {
+            $table->foreignId('role_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('permission_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();
+
+            $table->primary(['role_id', 'permission_id']);
+        });
+
+        $administratorRoleId = DB::table('roles')
+            ->where('code', 'administrador-biomedico')
+            ->value('id');
+
+        $permissionIds = DB::table('permissions')->pluck('id');
+
+        foreach ($permissionIds as $permissionId) {
+            DB::table('permission_role')->insert([
+                'role_id' => $administratorRoleId,
+                'permission_id' => $permissionId,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('permission_role');
+    }
+};

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ProductAssetController as SiteProductAssetController;
+use App\Http\Controllers\Site\ProductController as SiteProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,17 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/productos/{product}/imagen-destacada', [SiteProductAssetController::class, 'featured'])
     ->whereNumber('product')
     ->name('site.products.featured-image');
+
+Route::get('/productos/imagenes/{productImage}', [SiteProductAssetController::class, 'image'])
+    ->whereNumber('productImage')
+    ->name('site.product-images.show');
+
+Route::get('/productos/adjuntos/{productAttachment}', [SiteProductAssetController::class, 'attachment'])
+    ->whereNumber('productAttachment')
+    ->name('site.product-attachments.download');
+
+Route::get('/productos/{product:code}', [SiteProductController::class, 'show'])
+    ->name('site.products.show');
 
 Route::middleware('guest')->group(function (): void {
     Route::get('/login', [SessionController::class, 'create'])->name('login');

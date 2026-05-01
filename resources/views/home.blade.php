@@ -364,6 +364,10 @@
                                             </span>
                                         </div>
                                     </div>
+
+                                    <a href="{{ route('site.products.show', ['product' => $product->code]) }}" class="site-button-primary mt-5 w-full justify-center">
+                                        Ver ficha
+                                    </a>
                                 </div>
                             </article>
                         @endforeach

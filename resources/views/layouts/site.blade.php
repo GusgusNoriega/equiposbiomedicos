@@ -3,11 +3,12 @@
     $pageTitle = trim($__env->yieldContent('title', 'Equipos Biomedicos y Servicios'));
     $metaDescription = trim($__env->yieldContent('meta-description', 'Venta de equipos biomedicos, mantenimiento preventivo y correctivo con una presentacion comercial alineada al sistema.'));
     $companyName = trim($__env->yieldContent('company-name', 'Equipos Biomedicos y Servicios'));
+    $homeUrl = route('home');
     $siteNavigation = [
-        ['label' => 'Inicio', 'href' => '#inicio'],
-        ['label' => 'Servicios', 'href' => '#servicios'],
-        ['label' => 'Portafolio', 'href' => '#portafolio'],
-        ['label' => 'Mantenimiento', 'href' => '#mantenimiento'],
+        ['label' => 'Inicio', 'href' => $homeUrl . '#inicio'],
+        ['label' => 'Servicios', 'href' => $homeUrl . '#servicios'],
+        ['label' => 'Portafolio', 'href' => $homeUrl . '#portafolio'],
+        ['label' => 'Mantenimiento', 'href' => $homeUrl . '#mantenimiento'],
     ];
 @endphp
 

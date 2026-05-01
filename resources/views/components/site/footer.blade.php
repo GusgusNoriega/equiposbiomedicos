@@ -58,7 +58,7 @@
                             </a>
                         @endauth
 
-                        <a href="#servicios" class="site-button-secondary justify-center border-white/15 bg-white/10 text-white hover:border-cyan-200/40 hover:bg-white/14">
+                        <a href="{{ route('home') }}#servicios" class="site-button-secondary justify-center border-white/15 bg-white/10 text-white hover:border-cyan-200/40 hover:bg-white/14">
                             Revisar servicios
                         </a>
                     </div>

@@ -44,8 +44,8 @@
                         @endforeach
                     </nav>
 
-                    <a href="#portafolio" class="site-button-secondary">
-                        Ver portafolio
+                    <a href="{{ route('home') }}#portafolio" class="site-button-secondary">
+                        Ver catalogo
                     </a>
 
                     @auth
@@ -73,8 +73,8 @@
                 </nav>
 
                 <div class="mt-4 grid gap-3 sm:grid-cols-2">
-                    <a href="#portafolio" class="site-button-secondary justify-center">
-                        Ver portafolio
+                    <a href="{{ route('home') }}#portafolio" class="site-button-secondary justify-center">
+                        Ver catalogo
                     </a>
 
                     @auth
